@@ -12,8 +12,7 @@ public class BasicCalculator implements Calculator {
     @Override
     public List<TaperingStep> calculate(Medication medication,
                                         double reductionRate,
-                                        boolean firstStep,
-                                        Integer period) {
+                                        boolean firstStep) {
 
         double granularity = medication.getFinalDosage();
         Collections.sort(medication.getPills()); // Sort pill strengths in descending order for the greedy algorithm
@@ -36,11 +35,8 @@ public class BasicCalculator implements Calculator {
                 targetDosage = Math.round(targetDosage / granularity) * granularity; // Align with granularity
             }
 
-            double actualReduction = currentDosage - targetDosage;
-            int duration = actualReduction > currentDosage * reductionRate ? 28 : 7;
-
-            TaperingStep step = new TaperingStep(currentDosage, targetDosage, duration);
-            step.calculatePillComposition(sortedPills); // Calculate pill composition
+            TaperingStep step = new TaperingStep(currentDosage, targetDosage);
+            step.calculatePillComposition(sortedPills);
             steps.add(step);
 
             currentDosage = targetDosage;

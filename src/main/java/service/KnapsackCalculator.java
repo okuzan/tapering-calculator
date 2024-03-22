@@ -1,28 +1,21 @@
 package service;
 
-import model.Duration;
 import model.Medication;
 import model.Result;
 import model.TaperingStep;
+import util.Utility;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class KnapsackCalculator implements Calculator {
-    public static final int BOUND = 6;
-    public static final int WEEK = 7;
-
-
-    public static final int FORTNIGHT = 14;
-    public static final int MONTH = 28;
+    public static final int MAX_DAILY_PILL_COUNT = 6;
 
     @Override
     public List<TaperingStep> calculate(Medication medication,
                                         double reductionRate,
-                                        boolean firstStep,
-                                        Integer period) {
+                                        boolean firstStep) {
 
         List<TaperingStep> steps = new ArrayList<>();
         double currentDosage = medication.getInitialDosage();
@@ -51,16 +44,9 @@ public class KnapsackCalculator implements Calculator {
                         new HashMap<>(),
                         0);
             }
-            double roundedDosage = round(result.value); //rounded up to 10th
+            double roundedDosage = Utility.round(result.value); //rounded up to 10th
 
-            double actualReduction = round(currentDosage - roundedDosage);
-            double safeReduction = round(currentDosage * reductionRate);
-
-            int duration = Objects.requireNonNullElseGet(period,
-                    () -> actualReduction > safeReduction
-                            ? Duration.MONTH.getDays() : Duration.WEEK.getDays());
-
-            TaperingStep step = new TaperingStep(currentDosage, roundedDosage, duration);
+            TaperingStep step = new TaperingStep(currentDosage, roundedDosage);
             step.setPillCompositionDetailed(result.composition);
             steps.add(step);
 
@@ -68,9 +54,5 @@ public class KnapsackCalculator implements Calculator {
         }
 
         return steps;
-    }
-
-    private static double round(double number) {
-        return Math.round(number * 100.0) / 100.0;
     }
 }

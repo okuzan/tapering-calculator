@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static service.KnapsackCalculator.BOUND;
+import static service.KnapsackCalculator.MAX_DAILY_PILL_COUNT;
 
 public class FractionalKnapsackWithCeiling {
 
@@ -19,13 +19,13 @@ public class FractionalKnapsackWithCeiling {
             return memo.get(key);
         }
 
-        if (target <= 0 || currentCount >= BOUND) {
+        if (target <= 0 || currentCount >= MAX_DAILY_PILL_COUNT) {
             return new Result(0);
         }
 
         Result closest = new Result(0);
         for (Pill pill : divisors) {
-            if (pill.getStrength() <= target && currentCount < BOUND) {
+            if (pill.getStrength() <= target && currentCount < MAX_DAILY_PILL_COUNT) {
                 Result result = closestCombination(divisors, target - pill.getStrength(), memo, currentCount + 1);
                 double newValue = result.value + pill.getStrength();
                 if (newValue > closest.value && newValue <= target) {

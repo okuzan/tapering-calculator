@@ -12,15 +12,13 @@ public class TaperingStep {
     double dosageAfter;
     double actualReduction;
     int number;
-    int duration; // Duration in days
     // New map to keep track of pills by producer and strength
     Map<Pill, Integer> pillCompositionDetailed;
 
-    public TaperingStep(double dosageBefore, double dosageAfter, int duration) {
+    public TaperingStep(double dosageBefore, double dosageAfter) {
         this.dosageBefore = dosageBefore;
         this.dosageAfter = dosageAfter;
         this.actualReduction = dosageBefore - dosageAfter;
-        this.duration = duration;
         this.pillCompositionDetailed = new HashMap<>();
     }
 
@@ -29,8 +27,8 @@ public class TaperingStep {
                 .filter(pill -> pill.getProducer().equals(producer))
                 .sorted(Comparator.comparingDouble(Pill::getStrength).reversed())
                 .flatMap(pill -> Collections.nCopies(
-                        pillCompositionDetailed.get(pill),
-                        String.format(Locale.ROOT, "%.1f", pill.getStrength())
+                                pillCompositionDetailed.get(pill),
+                                String.format(Locale.ROOT, "%.1f", pill.getStrength())
                         ).stream()
                 )
                 .collect(Collectors.toList());
@@ -55,8 +53,8 @@ public class TaperingStep {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("Step %d. Dosage %.1fmg => %.1fmg, Actual reduction: %.1f%%, Duration: %d days, Pills: ",
-                number, dosageBefore, dosageAfter, (actualReduction / dosageBefore) * 100, duration));
+        sb.append(String.format("Step %d. Dosage %.1fmg => %.1fmg, Actual reduction: %.1f%%, Pills: ",
+                number, dosageBefore, dosageAfter, (actualReduction / dosageBefore) * 100));
 
         pillCompositionDetailed.forEach((pill, count) -> sb.append(String.format("%.1fmg x %d, ", pill.getStrength(), count)));
         if (!pillCompositionDetailed.isEmpty()) {

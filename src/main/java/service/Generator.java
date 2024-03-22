@@ -24,23 +24,21 @@ public class Generator {
         content.append("Calculated Dose,Regular,APL,Regenboogen\n");
 
         for (TaperingStep step : steps) {
-            for (int i = 0; i < step.getDuration(); i++) {
-                content.append((step.getDosageAfter()));
-                content.append(",");
-                // For each producer, collect pills into a comma-separated list enclosed in quotes
-                content.append("\"");
-                content.append(String.join(",", step.getPillsForCSVByProducer("Regular")));
-                content.append("\"");
-                content.append(",");
-                content.append("\"");
-                content.append(String.join(",", step.getPillsForCSVByProducer("APL")));
-                content.append("\"");
-                content.append(",");
-                content.append("\"");
-                content.append(String.join(",", step.getPillsForCSVByProducer("Regenboogen")));
-                content.append("\"");
-                content.append("\n");
-            }
+            content.append((step.getDosageAfter()));
+            content.append(",");
+            // For each producer, collect pills into a comma-separated list enclosed in quotes
+            content.append("\"");
+            content.append(String.join(",", step.getPillsForCSVByProducer("Regular")));
+            content.append("\"");
+            content.append(",");
+            content.append("\"");
+            content.append(String.join(",", step.getPillsForCSVByProducer("APL")));
+            content.append("\"");
+            content.append(",");
+            content.append("\"");
+            content.append(String.join(",", step.getPillsForCSVByProducer("Regenboogen")));
+            content.append("\"");
+            content.append("\n");
         }
         return content.toString();
     }
