@@ -36,3 +36,11 @@ build/
 
 ### Mac OS ###
 .DS_Store
+.xd
+/.idea/copilot/chatSessions/blobs/version
+/.idea/vcs.xml
+/.idea/workspace.xml
+/.idea/copilot/chatSessions/xd.lck
+/.idea/misc.xml
+/.idea/encodings.xml
+/.idea/copilot/chatSessions/00000000000.xd
