@@ -3,26 +3,23 @@ import model.Duration;
 import model.Medication;
 import model.Step;
 import model.TaperingStep;
-import service.Calculator;
-import service.Generator;
-import service.KnapsackCalculator;
-import service.Writer;
+import service.*;
 
 import java.util.List;
 
 public class App {
-    private static final String RESOURCES = "src/main/resources/one/";
+    private static final String RESOURCES = "src/main/resources/fast/";
     private static final String PLAN_TEMPLATE = RESOURCES + "%s_%s_%s.csv";
     private static final String TRANSCRIPT_TEMPLATE = RESOURCES + "%s_%s_%s_transcript.txt";
     private static final Writer writer = new Writer();
-    private final static Calculator planner = new KnapsackCalculator();
+    private final static Calculator planner = new BasicCalculator();
     private final static Generator generator = new Generator();
 
 
     public static void main(String[] args) {
-        Medication medication = Medications.AMITRIPTYLINE;
+        Medication medication = Medications.SERTRALIN;
         prepareWholePackage(medication);
-        prepareOnePlan(medication, Step.SLOW, null);
+        prepareOnePlan(medication, Step.FAST, null);
     }
 
     public static void prepareWholePackage(Medication medication) {
