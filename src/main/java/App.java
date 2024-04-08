@@ -22,10 +22,13 @@ public class App {
     public static void main(String[] args) {
         Medication medication = Medications.BUPROPION;
         prepareWholePackage(medication);
-        prepareOnePlan(medication, Step.SLOW);
+//        prepareOnePlan(medication, Step.SLOW);
     }
 
     public static void prepareWholePackage(Medication medication) {
+        for (Step step : Step.values()) {
+            prepareOnePlan(medication, step);
+        }
     }
 
     public static void prepareOnePlan(Medication medication, Step step) {
