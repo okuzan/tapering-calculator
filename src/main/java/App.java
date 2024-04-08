@@ -11,7 +11,7 @@ import util.Utility;
 import java.util.List;
 
 public class App {
-    private static final String RESOURCES = "src/main/resources/new/";
+    private static final String RESOURCES = "src/main/resources/";
     private static final String PLAN_TEMPLATE = RESOURCES + "%s_%s.csv";
     private static final String TRANSCRIPT_TEMPLATE = RESOURCES + "%s_%s_transcript.txt";
     private static final Writer writer = new Writer();

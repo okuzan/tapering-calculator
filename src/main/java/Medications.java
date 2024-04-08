@@ -19,18 +19,17 @@ public final class Medications {
             ))
     );
 
-    // Venlafaxin
-    public static final Medication VENLAFAXIN = new Medication(
-            "Venlafaxin",
-            150,
+    // Venlafaxine
+    public static final Medication VENLAFAXINE = new Medication(
+            "Venlafaxine",
+            225,
             2,
             new ArrayList<>(List.of(
                     new Pill(REGULAR, 37.5),
                     new Pill(REGULAR, 75),
-                    new Pill(REGULAR, 10),
                     new Pill(APL, 2),
                     new Pill(APL, 5),
-                    new Pill(APL, 18.5)
+                    new Pill(APL, 18.75)
             ))
     );
 

@@ -28,7 +28,7 @@ public class TaperingStep {
                 .sorted(Comparator.comparingDouble(Pill::getStrength).reversed())
                 .flatMap(pill -> Collections.nCopies(
                                 pillCompositionDetailed.get(pill),
-                                String.format(Locale.ROOT, "%.1f", pill.getStrength())
+                                String.format(Locale.ROOT, "%.2f", pill.getStrength())
                         ).stream()
                 )
                 .collect(Collectors.toList());
@@ -53,10 +53,10 @@ public class TaperingStep {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("Step %d. Dosage %.1fmg => %.1fmg, Actual reduction: %.1f%%, Pills: ",
+        sb.append(String.format("Step %d. Dosage %.2fmg => %.2fmg, Actual reduction: %.2f%%, Pills: ",
                 number, dosageBefore, dosageAfter, (actualReduction / dosageBefore) * 100));
 
-        pillCompositionDetailed.forEach((pill, count) -> sb.append(String.format("%.1fmg x %d, ", pill.getStrength(), count)));
+        pillCompositionDetailed.forEach((pill, count) -> sb.append(String.format("%.2fmg x %d, ", pill.getStrength(), count)));
         if (!pillCompositionDetailed.isEmpty()) {
             sb.delete(sb.length() - 2, sb.length()); // Remove trailing comma and space
         }

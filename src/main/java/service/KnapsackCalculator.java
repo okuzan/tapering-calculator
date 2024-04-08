@@ -44,7 +44,7 @@ public class KnapsackCalculator implements Calculator {
                         new HashMap<>(),
                         0);
             }
-            double roundedDosage = Utility.round(result.value); //rounded up to 10th
+            double roundedDosage = Utility.round(result.value); //rounded up to 1/100th
 
             TaperingStep step = new TaperingStep(currentDosage, roundedDosage);
             step.setPillCompositionDetailed(result.composition);
