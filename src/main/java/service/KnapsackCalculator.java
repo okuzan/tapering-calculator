@@ -51,7 +51,7 @@ public class KnapsackCalculator implements Calculator {
                         new HashMap<>(),
                         0);
             }
-            double roundedDosage = round(result.value); //rounded up to 10th
+            double roundedDosage = round(result.value); //rounded up to 0.01
 
             double actualReduction = round(currentDosage - roundedDosage);
             double safeReduction = round(currentDosage * reductionRate);
