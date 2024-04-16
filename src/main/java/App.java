@@ -20,7 +20,7 @@ public class App {
 
 
     public static void main(String[] args) {
-        Medication medication = Medications.BUPROPION;
+        Medication medication = Medications.SERTRALIN;
         prepareWholePackage(medication);
 //        prepareOnePlan(medication, Step.SLOW);
     }

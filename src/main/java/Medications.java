@@ -125,4 +125,15 @@ public final class Medications {
                     new Pill(REGULAR, 30)
             ))
     );
+    public static final Medication SERTRALIN = new Medication(
+            "Sertralin",
+            100,
+            2,
+            new ArrayList<>(List.of(
+                    new Pill(APL, 2),
+                    new Pill(APL, 5),
+                    new Pill(REGULAR, 25),
+                    new Pill(REGULAR, 50)
+            ))
+    );
 }
