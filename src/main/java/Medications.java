@@ -114,7 +114,7 @@ public final class Medications {
     // Citalopram
     public static final Medication CITALOPRAM = new Medication(
             "Citalopram",
-            40,
+            70,
             2,
             new ArrayList<>(List.of(
                     new Pill(APL, 2),

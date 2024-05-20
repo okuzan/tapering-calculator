@@ -17,11 +17,8 @@ public class App {
 
 
     public static void main(String[] args) {
-        Medication medication = Medications.VENLAFAXINE;
-//        prepareWholePackage(medication);
-        prepareOnePlan(medication, Step.STANDARD, null);
-        prepareOnePlan(medication, Step.SLOW, null);
-        prepareOnePlan(medication, Step.FAST, null);
+        Medication medication = Medications.CITALOPRAM;
+        prepareWholePackage(medication);
     }
 
     public static void prepareWholePackage(Medication medication) {
