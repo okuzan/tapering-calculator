@@ -2,6 +2,7 @@ import lombok.SneakyThrows;
 import model.Medication;
 import model.Step;
 import model.TaperingStep;
+import service.BasicCalculator;
 import service.Calculator;
 import service.Generator;
 import service.KnapsackCalculator;
@@ -20,9 +21,9 @@ public class App {
 
 
     public static void main(String[] args) {
-        Medication medication = Medications.CITALOPRAM;
-        prepareWholePackage(medication);
-//        prepareOnePlan(medication, Step.SLOW);
+        Medication medication = Medications.AMITRIPTYLINE;
+//        prepareWholePackage(medication);
+        prepareOnePlan(medication, Step.STANDARD);
     }
 
     public static void prepareWholePackage(Medication medication) {

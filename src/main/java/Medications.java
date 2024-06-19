@@ -105,8 +105,7 @@ public final class Medications {
                     new Pill(REGULAR, 44.2),
                     new Pill(REGULAR, 25),
                     new Pill(REGULAR, 22.1),
-                    new Pill(REGULAR, 10),
-                    new Pill(REGULAR, 8.8)
+                    new Pill(REGULAR, 10)
             ))
     );
 
